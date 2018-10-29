@@ -38,6 +38,8 @@ function mancoreg(targetimage,sourceimage);
 % Version 1.0.3
 % Added:    Made compatible with SPM5 and corrected "Yawn" (altho I like it)
 
+% clear all; close all
+
 global st mancoregvar
 
 %% Make sure we have both image filenames and map images
@@ -69,11 +71,11 @@ else
 end;
 WS = spm('WinScale');
 
-htargetstim=spm_orthviews('Image',targetvol,[0.1 0.55 0.45 0.48]);        
+htargetstim=spm_orthviews('Image',targetvol,[0.06 0.49 0.52 0.55]);        
     spm_orthviews('space');
     spm_orthviews('AddContext',htargetstim);
 
-hsourcestim=spm_orthviews('Image',sourcevol,[0.1 0.08 0.45 0.48]);        
+hsourcestim=spm_orthviews('Image',sourcevol,[0.06 0.06 0.52 0.55]);        
     spm_orthviews('AddContext',hsourcestim);
 
 spm_orthviews('maxbb');
@@ -86,9 +88,10 @@ mancoregvar.sourceimage=st.vols{2};
 
 % 1.a Titles and boxes   
 
-uicontrol(fg,'style','text','string','Manual coregistration tool','position',[200 825 200 30].*WS,'Fontsize',16,'backgroundcolor',[1 1 1]);
+uicontrol(fg,'style','text','string','Manual coregistration tool','position',[200 825 250 30].*WS,'Fontsize',16,'backgroundcolor',[1 1 1]);
 
 uicontrol(fg,'style','frame','position',[360 750 240 60].*WS);
+uicontrol(fg,'style','frame','position',[360 500 240 60].*WS);
 uicontrol(fg,'style','frame','position',[360 40 240 410].*WS);
 
 uicontrol(fg,'style','text','string','TARGET IMAGE','position',[370 780 80 019].*WS,'Fontsize',10);
@@ -124,11 +127,11 @@ mancoregvar.hmat_4_4=uicontrol(fg,'style','text','string','1.00','position',[550
 %% 2. Rotation sliders    
 
 mancoregvar.hpitch =    uicontrol(fg,'style','slider','position',[430 250 100 019].*WS,'Value',0,...
-    'min',-pi,'max',pi,'sliderstep',[0.001 0.001],'Callback','mancoreg_callbacks(''move'')');
+    'min',-pi,'max',pi,'sliderstep',[0.01 0.01],'Callback','mancoreg_callbacks(''move'')');
 mancoregvar.hroll  =    uicontrol(fg,'style','slider','position',[430 225 100 019].*WS,'Value',0,...
-    'min',-pi,'max',pi,'sliderstep',[0.001 0.001],'Callback','mancoreg_callbacks(''move'')');
+    'min',-pi,'max',pi,'sliderstep',[0.01 0.01],'Callback','mancoreg_callbacks(''move'')');
 mancoregvar.hyaw   =    uicontrol(fg,'style','slider','position',[430 200 100 019].*WS,'Value',0,...
-    'min',-pi,'max',pi,'sliderstep',[0.001 0.001],'Callback','mancoreg_callbacks(''move'')');
+    'min',-pi,'max',pi,'sliderstep',[0.01 0.01],'Callback','mancoreg_callbacks(''move'')');
 
 uicontrol(fg,'style','text','string','PITCH','position',[370 250 60 019].*WS,'Fontsize',10);
 uicontrol(fg,'style','text','string','ROLL','position',[370 225 60 019].*WS,'Fontsize',10);
@@ -141,11 +144,11 @@ mancoregvar.hyaw_val=uicontrol(fg,'style','text','string','0','position',[530 20
 %% 3. Translation sliders    
 
 mancoregvar.hx =    uicontrol(fg,'style','slider','position',[430 175 100 019].*WS,'Value',0,...
-    'min',-500,'max',500,'sliderstep',[0.001 0.001],'Callback','mancoreg_callbacks(''move'')');
+    'min',-500,'max',500,'sliderstep',[0.01 0.01],'Callback','mancoreg_callbacks(''move'')');
 mancoregvar.hy =    uicontrol(fg,'style','slider','position',[430 150 100 019].*WS,'Value',0,...
-    'min',-500,'max',500,'sliderstep',[0.001 0.001],'Callback','mancoreg_callbacks(''move'')');
+    'min',-500,'max',500,'sliderstep',[0.01 0.01],'Callback','mancoreg_callbacks(''move'')');
 mancoregvar.hz =    uicontrol(fg,'style','slider','position',[430 125 100 019].*WS,'Value',0,...
-    'min',-500,'max',500,'sliderstep',[0.001 0.001],'Callback','mancoreg_callbacks(''move'')');
+    'min',-500,'max',500,'sliderstep',[0.01 0.01],'Callback','mancoreg_callbacks(''move'')');
 
 uicontrol(fg,'style','text','string','X','position',[370 175 60 019].*WS,'Fontsize',10);
 uicontrol(fg,'style','text','string','Y','position',[370 150 60 019].*WS,'Fontsize',10);
@@ -172,6 +175,17 @@ mancoregvar.hreset =    uicontrol(fg,'style','pushbutton','position',[370 75 220
 mancoregvar.hwrite =    uicontrol(fg,'style','pushbutton','position',[370 50 220 019].*WS,'String','Apply transformation',...
     'Callback','mancoreg_callbacks(''apply'')');
 
+
+%% 7. "Disp coreg hist" pushbutton
+
+mancoregvar.hwrite =    uicontrol(fg,'style','pushbutton','position',[370 510 220 019].*WS,'String','Disp coreg hist',...
+    'Callback','mancoreg_callbacks(''dispcoreghist'')');
+
+
+%% 7. "Cost function" pushbutton
+
+mancoregvar.hwrite =    uicontrol(fg,'style','pushbutton','position',[370 535 220 019].*WS,'String','Compute cost functions',...
+    'Callback','mancoreg_callbacks(''costfunc'')');
 
 %% Fill in "transf." fields
 
