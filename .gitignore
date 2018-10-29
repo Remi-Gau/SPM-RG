@@ -1,3 +1,14 @@
 
 *.tif
 *.mat
+*.img
+*.hdr
+*.nii
+*.zip
+*.gz
+*.asv
+*.zip
+*.png
+*.csv
+*.ttl
+*.jsonld
