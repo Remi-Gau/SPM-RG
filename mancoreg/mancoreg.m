@@ -124,11 +124,11 @@ mancoregvar.hmat_4_4=uicontrol(fg,'style','text','string','1.00','position',[550
 %% 2. Rotation sliders    
 
 mancoregvar.hpitch =    uicontrol(fg,'style','slider','position',[430 250 100 019].*WS,'Value',0,...
-    'min',-pi,'max',pi,'sliderstep',[0.001 0.001],'Callback','mancoreg_callbacks(''move'')');
+    'min',-pi,'max',pi,'sliderstep',[0.01 0.01],'Callback','mancoreg_callbacks(''move'')');
 mancoregvar.hroll  =    uicontrol(fg,'style','slider','position',[430 225 100 019].*WS,'Value',0,...
-    'min',-pi,'max',pi,'sliderstep',[0.001 0.001],'Callback','mancoreg_callbacks(''move'')');
+    'min',-pi,'max',pi,'sliderstep',[0.01 0.01],'Callback','mancoreg_callbacks(''move'')');
 mancoregvar.hyaw   =    uicontrol(fg,'style','slider','position',[430 200 100 019].*WS,'Value',0,...
-    'min',-pi,'max',pi,'sliderstep',[0.001 0.001],'Callback','mancoreg_callbacks(''move'')');
+    'min',-pi,'max',pi,'sliderstep',[0.01 0.01],'Callback','mancoreg_callbacks(''move'')');
 
 uicontrol(fg,'style','text','string','PITCH','position',[370 250 60 019].*WS,'Fontsize',10);
 uicontrol(fg,'style','text','string','ROLL','position',[370 225 60 019].*WS,'Fontsize',10);
@@ -141,11 +141,11 @@ mancoregvar.hyaw_val=uicontrol(fg,'style','text','string','0','position',[530 20
 %% 3. Translation sliders    
 
 mancoregvar.hx =    uicontrol(fg,'style','slider','position',[430 175 100 019].*WS,'Value',0,...
-    'min',-500,'max',500,'sliderstep',[0.001 0.001],'Callback','mancoreg_callbacks(''move'')');
+    'min',-500,'max',500,'sliderstep',[0.01 0.01],'Callback','mancoreg_callbacks(''move'')');
 mancoregvar.hy =    uicontrol(fg,'style','slider','position',[430 150 100 019].*WS,'Value',0,...
-    'min',-500,'max',500,'sliderstep',[0.001 0.001],'Callback','mancoreg_callbacks(''move'')');
+    'min',-500,'max',500,'sliderstep',[0.01 0.01],'Callback','mancoreg_callbacks(''move'')');
 mancoregvar.hz =    uicontrol(fg,'style','slider','position',[430 125 100 019].*WS,'Value',0,...
-    'min',-500,'max',500,'sliderstep',[0.001 0.001],'Callback','mancoreg_callbacks(''move'')');
+    'min',-500,'max',500,'sliderstep',[0.01 0.01],'Callback','mancoreg_callbacks(''move'')');
 
 uicontrol(fg,'style','text','string','X','position',[370 175 60 019].*WS,'Fontsize',10);
 uicontrol(fg,'style','text','string','Y','position',[370 150 60 019].*WS,'Fontsize',10);
