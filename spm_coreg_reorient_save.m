@@ -2,7 +2,7 @@ function M = spm_coreg_reorient_save(varargin)
 % FORMAT M = spm_coreg_reorient_save(TargetScan,SourceScan,OtherImg,flags)
 % Nothing fancy just reorient the image one image to another one and saves
 % the reorientation matrix in case other images need to be orientated
-% later.
+% later. Because I could not find an SPM function that does that.
 %
 % TargetScan - handle for reference image (see spm_vol).
 % SourceScan - handle for source (moved) image.

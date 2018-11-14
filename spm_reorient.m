@@ -1,6 +1,9 @@
 function spm_reorient(ImagesFiles2Process, M)
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%spm_reorient(ImagesFiles2Process, M)
+% Just applies a transformation matrix to a bunch of images (only changes the header)
+% ImagesFiles2Process{n,1} : a cell of n images fullpath filenames
+% M - reorientation matrix that will move the source image to the target
+% image
 
 spm_progress_bar('Init',size(ImagesFiles2Process,1),...
     'Reading current orientations',...
